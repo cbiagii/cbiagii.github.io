@@ -77,13 +77,13 @@
     </item>
     
     <item>
-      <title>Single-Cell Clustering Assessment Framework (SCCAF)</title>
+      <title>Stop your analysis until you read this clustering secret</title>
       <link>/post/post_01/</link>
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
       <guid>/post/post_01/</guid>
-      <description>&lt;p&gt;I had been analyzing the data for a while with a friend from the lab (
-&lt;a href=&#34;https://twitter.com/cleidson_alves&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cleidson&lt;/a&gt;) and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
-&lt;a href=&#34;https://github.com/lazappi/clustree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;clustree&lt;/a&gt; package in R how the clusters were splited from the smallest to the maximum resolution that I had predetermined.&lt;/p&gt;
+      <description>&lt;p&gt;I had been analyzing the data for a while with my friend 
+&lt;a href=&#34;https://twitter.com/cleidson_alves&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cleidson&lt;/a&gt; and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
+&lt;a href=&#34;https://github.com/lazappi/clustree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;clustree&lt;/a&gt; package in R how the clusters were split from the smallest to the maximum resolution that I had predetermined.&lt;/p&gt;
 &lt;p&gt;I was generating something like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;data &amp;lt;- FindClusters(data, resolution = seq(0, 1, 0.1))
 
@@ -225,8 +225,10 @@ conda deactivate
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The next steps, from the generated h5ad file, can be followed through the tutorial available on the 
 &lt;a href=&#34;https://github.com/SCCAF/sccaf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tool&amp;rsquo;s GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I ran for a dataset with approximately 70,000 cells and the complete SCCAF analysis took almost 2 hours. Consider that I am using the 
+&lt;a href=&#34;https://rrzk.uni-koeln.de/en/hpc-projects/hpc/technical-details&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cologne High Efficiency Operating Platform for Science (CHEOPS)&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I strongly recommend reading the 
-&lt;a href=&#34;https://www.nature.com/articles/s41592-020-0825-9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;original paper&lt;/a&gt; before using the tool to better understand the methods. As I said at the beginning, I used it in my data and the results were very satisfactory and I included it in the defalut pipeline of my analyzes.&lt;/p&gt;
+&lt;a href=&#34;https://www.nature.com/articles/s41592-020-0825-9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;original paper&lt;/a&gt; before using the tool to better understand the methods. As I said at the beginning, I used it in my data and the results were very satisfactory and I included it in the default pipeline of my analyzes.&lt;/p&gt;
 &lt;p&gt;I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!&lt;/p&gt;
 &lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
 </description>

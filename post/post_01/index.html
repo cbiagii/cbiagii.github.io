@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="I had been analyzing the data for a while with a friend from the lab ( Cleidson) and we always asked ourselves, how to determine the optimal number of clusters for our data?">
+  <meta name="description" content="I had been analyzing the data for a while with my friend Cleidson and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/post_01/">
@@ -274,8 +274,8 @@
   
   <meta property="og:site_name" content="Carlos Biagi Jr">
   <meta property="og:url" content="/post/post_01/">
-  <meta property="og:title" content="Single-Cell Clustering Assessment Framework (SCCAF) | Carlos Biagi Jr">
-  <meta property="og:description" content="I had been analyzing the data for a while with a friend from the lab ( Cleidson) and we always asked ourselves, how to determine the optimal number of clusters for our data?"><meta property="og:image" content="/post/post_01/featured.png">
+  <meta property="og:title" content="Stop your analysis until you read this clustering secret | Carlos Biagi Jr">
+  <meta property="og:description" content="I had been analyzing the data for a while with my friend Cleidson and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data."><meta property="og:image" content="/post/post_01/featured.png">
   <meta property="twitter:image" content="/post/post_01/featured.png"><meta property="og:locale" content="en-us">
   
     
@@ -307,7 +307,7 @@
     "@type": "WebPage",
     "@id": "/post/post_01/"
   },
-  "headline": "Single-Cell Clustering Assessment Framework (SCCAF)",
+  "headline": "Stop your analysis until you read this clustering secret",
   
   "image": [
     "/post/post_01/featured.png"
@@ -329,7 +329,7 @@
       "url": "/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "I had been analyzing the data for a while with a friend from the lab ( Cleidson) and we always asked ourselves, how to determine the optimal number of clusters for our data?"
+  "description": "I had been analyzing the data for a while with my friend Cleidson and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data."
 }
 </script>
 
@@ -347,7 +347,7 @@
 
 
 
-  <title>Single-Cell Clustering Assessment Framework (SCCAF) | Carlos Biagi Jr</title>
+  <title>Stop your analysis until you read this clustering secret | Carlos Biagi Jr</title>
 
 </head>
 
@@ -517,10 +517,12 @@
 
   
   
+    
+  
 
 
 <div class="article-container pt-3">
-  <h1>Single-Cell Clustering Assessment Framework (SCCAF)</h1>
+  <h1>Stop your analysis until you read this clustering secret</h1>
 
   
 
@@ -578,9 +580,9 @@
 </div>
 
 
-<div class="article-header container-fluid featured-image-wrapper mt-4 mb-4" style="max-width: 591px; max-height: 261px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 720px;">
   <div style="position: relative">
-    <img src="/post/post_01/featured.png" alt="" class="featured-image">
+    <img src="/post/post_01/featured_hu500ff705b0803c9140c02913256b6f40_689379_720x0_resize_lanczos_2.png" alt="" class="featured-image">
     <span class="article-header-caption">Image credit: <a href="content/post/post_01/paper.png"><strong>https://doi.org/10.1038/s41592-020-0825-9</strong></a></span>
   </div>
 </div>
@@ -590,9 +592,9 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>I had been analyzing the data for a while with a friend from the lab (
-<a href="https://twitter.com/cleidson_alves" target="_blank" rel="noopener">Cleidson</a>) and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
-<a href="https://github.com/lazappi/clustree" target="_blank" rel="noopener">clustree</a> package in R how the clusters were splited from the smallest to the maximum resolution that I had predetermined.</p>
+      <p>I had been analyzing the data for a while with my friend 
+<a href="https://twitter.com/cleidson_alves" target="_blank" rel="noopener">Cleidson</a> and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
+<a href="https://github.com/lazappi/clustree" target="_blank" rel="noopener">clustree</a> package in R how the clusters were split from the smallest to the maximum resolution that I had predetermined.</p>
 <p>I was generating something like this:</p>
 <pre><code class="language-R">data &lt;- FindClusters(data, resolution = seq(0, 1, 0.1))
 
@@ -734,8 +736,10 @@ conda deactivate
 </code></pre>
 <p>The next steps, from the generated h5ad file, can be followed through the tutorial available on the 
 <a href="https://github.com/SCCAF/sccaf" target="_blank" rel="noopener">tool&rsquo;s GitHub</a>.</p>
+<p>I ran for a dataset with approximately 70,000 cells and the complete SCCAF analysis took almost 2 hours. Consider that I am using the 
+<a href="https://rrzk.uni-koeln.de/en/hpc-projects/hpc/technical-details" target="_blank" rel="noopener">Cologne High Efficiency Operating Platform for Science (CHEOPS)</a>.</p>
 <p>I strongly recommend reading the 
-<a href="https://www.nature.com/articles/s41592-020-0825-9" target="_blank" rel="noopener">original paper</a> before using the tool to better understand the methods. As I said at the beginning, I used it in my data and the results were very satisfactory and I included it in the defalut pipeline of my analyzes.</p>
+<a href="https://www.nature.com/articles/s41592-020-0825-9" target="_blank" rel="noopener">original paper</a> before using the tool to better understand the methods. As I said at the beginning, I used it in my data and the results were very satisfactory and I included it in the default pipeline of my analyzes.</p>
 <p>I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!</p>
 <h3 id="did-you-find-this-page-helpful-consider-sharing-it-">Did you find this page helpful? Consider sharing it 🙌</h3>
 
