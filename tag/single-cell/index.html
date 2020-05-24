@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167505075-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-167505075-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -236,11 +274,11 @@
   
   <meta property="og:site_name" content="Carlos Biagi Jr">
   <meta property="og:url" content="/tag/single-cell/">
-  <meta property="og:title" content="Single-cell | Carlos Biagi Jr">
+  <meta property="og:title" content="single-cell | Carlos Biagi Jr">
   <meta property="og:description" content=""><meta property="og:image" content="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2015-07-23T21:13:14-05:00">
+    <meta property="og:updated_time" content="2020-05-24T00:00:00&#43;00:00">
   
 
   
@@ -257,7 +295,7 @@
 
 
 
-  <title>Single-cell | Carlos Biagi Jr</title>
+  <title>single-cell | Carlos Biagi Jr</title>
 
 </head>
 
@@ -423,7 +461,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>Single-cell</h1>
+  <h1>single-cell</h1>
 
   
 
@@ -441,10 +479,10 @@
     
     
     <div>
-      <h2><a href="/post/2015-07-23-r-rmarkdown/" >Hello R Markdown</a></h2>
+      <h2><a href="/post/post_01/" >Single-Cell Clustering Assessment Framework (SCCAF)</a></h2>
       <div class="article-style">
         
-          R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.
+          I had been analyzing the data for a while with a friend from the lab ( Cleidson) and we always asked ourselves, how to determine the optimal number of clusters for our data?
         
       </div>
     </div>
@@ -569,16 +607,6 @@
   
   <div class="container">
     <footer class="site-footer">
-  
-  <p class="powered-by">
-    
-      <a href="/privacy/">Privacy Policy</a>
-    
-    
-       &middot; 
-      <a href="/terms/">Terms</a>
-    
-  </p>
   
 
   <p class="powered-by">

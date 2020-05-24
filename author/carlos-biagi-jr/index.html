@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167505075-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-167505075-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -565,9 +603,15 @@
     
     
 
-    <p>Carlos Biagi Jr is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.</p>
-<p>Testem teste, teste, teste, teste, teste</p>
+    <p>Hi folks, my name is Carlos and I&rsquo;m R, bioinformatics and single-cell enthusiast! Since 2012, I have been working with microarray and RNA-seq data, but things started to get more intense when, in 2017, I started my PhD at the 
+<a href="https://www5.usp.br/english/institutional/" target="_blank" rel="noopener">University of São Paulo</a> in Department of Genetics in 
+<a href="https://www.fmrp.usp.br/en/" target="_blank" rel="noopener">Ribeirão Preto Medica School</a>. Since then I have been dedicating myself to single-cell analysis.</p>
+<p>I&rsquo;m currently as PhD Researcher Assistant at the 
+<a href="https://www.uni-koeln.de/" target="_blank" rel="noopener">Universität zu Köln</a> working in 
+<a href="http://cds.uni-koeln.de/en/people/core-scientists/prof-dr-martin-peifer" target="_blank" rel="noopener">Prof. Martin Peifer</a> lab in the 
+<a href="https://www.translational-genomics.uni-koeln.de/" target="_blank" rel="noopener">Department of Translational Genomics</a>.</p>
+<p>I have always kept in mind that good science is science that can be reproduced and shared. Based on this principle, I decided to create this blog to share good and bad experiences that I had and I am having during this journey as a bioinformatician. The main idea is to share solutions I found for the problems I had. I sincerely hope that this blog can help other people and also that it is a means of new connections with people in the bioinformatics field.</p>
+<p>May the force be with you!</p>
 
 
     <div class="row">
@@ -579,9 +623,15 @@
           
           <li>R</li>
           
+          <li>Unix</li>
+          
           <li>Python</li>
           
+          <li>Docker</li>
+          
           <li>Single-cell</li>
+          
+          <li>Bioinformatics</li>
           
         </ul>
       </div>
@@ -627,14 +677,6 @@
         
         <li>
           <a href="/publication/preprint/">An example preprint / working paper</a>
-        </li>
-        
-        <li>
-          <a href="/post/jupyter/">Display Jupyter Notebooks with Academic</a>
-        </li>
-        
-        <li>
-          <a href="/post/getting-started/">Academic: the website builder for Hugo</a>
         </li>
         
         <li>
@@ -766,16 +808,6 @@
   
   <div class="container">
     <footer class="site-footer">
-  
-  <p class="powered-by">
-    
-      <a href="/privacy/">Privacy Policy</a>
-    
-    
-       &middot; 
-      <a href="/terms/">Terms</a>
-    
-  </p>
   
 
   <p class="powered-by">

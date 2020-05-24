@@ -1,64 +1,170 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Single-cell | Carlos Biagi Jr</title>
+    <title>single-cell | Carlos Biagi Jr</title>
     <link>/tag/single-cell/</link>
       <atom:link href="/tag/single-cell/index.xml" rel="self" type="application/rss+xml" />
-    <description>Single-cell</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <description>single-cell</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
-      <title>Single-cell</title>
+      <title>single-cell</title>
       <link>/tag/single-cell/</link>
     </image>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>
+      <title>Single-Cell Clustering Assessment Framework (SCCAF)</title>
+      <link>/post/post_01/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/post_01/</guid>
+      <description>&lt;p&gt;I had been analyzing the data for a while with a friend from the lab (
+&lt;a href=&#34;https://twitter.com/cleidson_alves&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cleidson&lt;/a&gt;) and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
+&lt;a href=&#34;https://github.com/lazappi/clustree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;clustree&lt;/a&gt; package in R how the clusters were splited from the smallest to the maximum resolution that I had predetermined.&lt;/p&gt;
+&lt;p&gt;I was generating something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;data &amp;lt;- FindClusters(data, resolution = seq(0, 1, 0.1))
 
+clustree(data)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;clustree.png&#34; alt=&#34;&amp;ldquo;clustree&amp;rdquo;&#34;&gt;
+&lt;em&gt;Fig. 1: clustree visualization.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The approach was basically to look at the graph above and identify the resolution where there were not many changes in the numbers of clusters. It is not the best alternative by far, but it was an attempt.&lt;/p&gt;
+&lt;p&gt;Until following on Twitter I saw a 
+&lt;a href=&#34;https://www.nature.com/articles/s41592-020-0825-9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paper&lt;/a&gt; that came out on May 18th, and I found the methodology and results very interesting. The paper included the 
+&lt;a href=&#34;https://github.com/SCCAF/sccaf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SCCAF tool&lt;/a&gt;(installation instructions) which, in simple words, assumes that you pass as input each cluster being theoretically a cell type, and from the implementation of SCCAF (which includes a good part of machine learning) will return what is the combination of clusters (or cell types) that have better accuracy. Are you confused yet? I&amp;rsquo;ll show you an example below.&lt;/p&gt;
+&lt;p&gt;The tool was made entirely in Python, and I had my data all run using Seurat, in R. Initially I thought that a simple conversion of the seurat object to a loom file would be enough, but I had the following problem when putting SCCAF to run:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;import warnings
+warnings.filterwarnings(&amp;quot;ignore&amp;quot;)
+from SCCAF import *
 
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+ad = sc.read(filename=&amp;quot;/projects/biagi/data.loom&amp;quot;)
+
+ad.obs[&#39;L1_Round0&#39;] = ad.obs[&#39;clusters&#39;]
+SCCAF_optimize_all(min_acc=0.953, ad=ad, basis =&#39;tsne&#39;, c_iter=5)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;error.png&#34; alt=&#34;&amp;ldquo;clustree&amp;rdquo;&#34;&gt;
+&lt;em&gt;Fig. 2: SCCAF error message.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I realized that the way that Seurat generates the loom file was not the default way for the AnnData object that will be read inside python. To work around this problem, I tested numerous alternatives, but none worked. Then I remembered that in version 2 of Seurat there was a function that converted the seurat object to a h5ad file. So I took the source function of version 2 as a base and went on adapting and modifying it until I had a function that converts the seurat object to an h5ad file, which is exactly what we need to give as input to SCCAF.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;SeuratToH5ad &amp;lt;- function(seurat_object, filename, assay = NULL, res = 1) {
+  library(reticulate)
+
+  if (!py_module_available(&amp;quot;anndata&amp;quot;) | !py_module_available(&amp;quot;scanpy&amp;quot;) | !py_module_available(&amp;quot;igraph&amp;quot;) | !py_module_available(&amp;quot;louvain&amp;quot;)) {
+    stop(&amp;quot;Please install the anndata python module&amp;quot;)
+  }
+  ad &amp;lt;- import(&amp;quot;anndata&amp;quot;)
+  sc &amp;lt;- import(&amp;quot;scanpy&amp;quot;)
+  
+  message(paste(&amp;quot;Starting to fix the mess...&amp;quot;))
+  
+  raw &amp;lt;- seurat_object@assays$RNA@data
+  if (assay == &amp;quot;RNA&amp;quot;) {
+    X &amp;lt;- seurat_object@assays$RNA@scale.data
+  } else if (assay == &amp;quot;SCT&amp;quot;) {
+    X &amp;lt;- seurat_object@assays$SCT@scale.data
+  } else {
+    stop(&amp;quot;Please select an existent assay&amp;quot;)
+  }
+  
+  cell_names &amp;lt;- colnames(x = X)
+  gene_names &amp;lt;- rownames(x = X)
+  raw &amp;lt;- as(object = raw, Class = &amp;quot;dgCMatrix&amp;quot;)
+  
+  scipy &amp;lt;- import(module = &#39;scipy.sparse&#39;, convert = FALSE)
+  sp_sparse_csc &amp;lt;- scipy$csc_matrix
+  raw.rownames &amp;lt;- rownames(x = raw)
+  raw &amp;lt;- sp_sparse_csc(
+    tuple(np_array(raw@x), np_array(raw@i), np_array(raw@p)),
+    shape = tuple(raw@Dim[1], raw@Dim[2])
+  )
+  
+  raw &amp;lt;- raw$T
+  raw &amp;lt;- dict(X = raw, var = dict(var_names = raw.rownames))
+  
+  X &amp;lt;- np_array(t(x = X))
+  
+  obsm &amp;lt;- list()
+  for (dr in names(seurat_object@reductions)) {
+    obsm[[paste0(&amp;quot;X_&amp;quot;,dr)]] &amp;lt;- np_array(Embeddings(
+      object = seurat_object,
+      reduction = dr
+    ))
+  }
+  obsm &amp;lt;- dict(obsm)
+  meta_data &amp;lt;- seurat_object@meta.data
+  if (&amp;quot;nCount_RNA&amp;quot; %in% colnames(x = meta_data)) {
+    colnames(x = meta_data) &amp;lt;- gsub(
+      pattern = &amp;quot;nCount_RNA&amp;quot;,
+      replacement = &amp;quot;n_counts&amp;quot;,
+      x = colnames(x = meta_data)
+    )
+  }
+  if (&amp;quot;nFeature_RNA&amp;quot; %in% colnames(x = meta_data)) {
+    colnames(x = meta_data) &amp;lt;- gsub(
+      pattern = &amp;quot;nFeature_RNA&amp;quot;,
+      replacement = &amp;quot;n_genes&amp;quot;,
+      x = colnames(x = meta_data)
+    )
+  }
+  colnames(x = meta_data) &amp;lt;- gsub(
+    pattern = &amp;quot;\\.&amp;quot;,
+    replacement = &amp;quot;_&amp;quot;,
+    x = colnames(x = meta_data)
+  )
+  
+  anndata.object &amp;lt;- ad$AnnData(
+    raw = raw,
+    X = X,
+    obs = meta_data,
+    obsm = obsm
+  )
+  anndata.object$var_names &amp;lt;- gene_names
+  anndata.object$obs_names &amp;lt;- cell_names
+  
+  message(paste(&amp;quot;Clustering for resolution:&amp;quot;, res))
+  sc$pp$neighbors(anndata.object)
+  sc$tl$louvain(anndata.object, resolution=res, key_added = paste0(&amp;quot;res&amp;quot;, res))
+  
+  message(paste(&amp;quot;Writing to h5ad file...&amp;quot;))
+  anndata.object$write(filename)
+  message(paste(&amp;quot;Finished!!&amp;quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let&amp;rsquo;s explain in more detail the function parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;seurat_object:&lt;/strong&gt; a seurat object with the basic steps already run (NormalizeData, FindVariableFeatures, ScaleData, RunPCA, FindNeighbors, FindClusters and RunUMAP/RunTSNE);&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;filename:&lt;/strong&gt; path with file name (i.e. &lt;em&gt;/path/to/output/file.h5ad&lt;/em&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;assay:&lt;/strong&gt; choose between RNA or SCT;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;res:&lt;/strong&gt; resolution for clustering if clustering has not yet been done.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So, in the end the function will bem implemented this way:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;SeuratToH5ad(seurat_object = data, 
+             filename = &amp;quot;/path/to/output//data.h5ad&amp;quot;,
+             assay = &amp;quot;RNA&amp;quot;, 
+             res = 1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Some important details: for the function to work it is necessary to have the 
+&lt;a href=&#34;https://cran.r-project.org/web/packages/reticulate/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;reticulate&lt;/a&gt; package installed. In addition to it, it is necessary to install the &lt;strong&gt;anndata&lt;/strong&gt;, &lt;strong&gt;scanpy&lt;/strong&gt;, &lt;strong&gt;pandas&lt;/strong&gt;, &lt;strong&gt;louvain&lt;/strong&gt; modules in the &lt;em&gt;r-reticulate&lt;/em&gt; environment that the Seurat package itself creates automatically.&lt;/p&gt;
+&lt;p&gt;To install these modules, simply identify the full name of the &lt;em&gt;r-reticulate&lt;/em&gt; environment:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;# list all available conda environments
+conda env list
+
+# in my case
+conda activate /home/biagi/.local/share/r-miniconda/envs/r-reticulate
+
+# installing each module manually
+conda install -c bioconda anndata
+conda install -c bioconda scanpy
+conda install -c anaconda pandas
+conda install -c conda-forge louvain
+
+# deactivate r-reticulate env
+conda deactivate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next steps, from the generated h5ad file, can be followed through the tutorial available on the 
+&lt;a href=&#34;https://github.com/SCCAF/sccaf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tool&amp;rsquo;s GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I strongly recommend reading the 
+&lt;a href=&#34;https://www.nature.com/articles/s41592-020-0825-9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;original paper&lt;/a&gt; before using the tool to better understand the methods. As I said at the beginning, I used it in my data and the results were very satisfactory and I included it in the defalut pipeline of my analyzes.&lt;/p&gt;
+&lt;p&gt;I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!&lt;/p&gt;
+&lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
 </description>
     </item>
     
