@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R Markdown | Carlos Biagi Jr</title>
-    <link>/tag/r-markdown/</link>
-      <atom:link href="/tag/r-markdown/index.xml" rel="self" type="application/rss+xml" />
-    <description>R Markdown</description>
+    <title>Single-cell | Carlos Biagi Jr</title>
+    <link>/tag/single-cell/</link>
+      <atom:link href="/tag/single-cell/index.xml" rel="self" type="application/rss+xml" />
+    <description>Single-cell</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
     <image>
       <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
-      <title>R Markdown</title>
-      <link>/tag/r-markdown/</link>
+      <title>Single-cell</title>
+      <link>/tag/single-cell/</link>
     </image>
     
     <item>
