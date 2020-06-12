@@ -1,0 +1,870 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Carlos Biagi Jr">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/post_02/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167505075-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-167505075-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/post_02/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Carlos Biagi Jr">
+  <meta property="og:url" content="/post/post_02/">
+  <meta property="og:title" content="A fast and smart alternative for classifying cell types | Carlos Biagi Jr">
+  <meta property="og:description" content="This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus."><meta property="og:image" content="/post/post_02/featured.png">
+  <meta property="twitter:image" content="/post/post_02/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-12T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-06-12T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/post_02/"
+  },
+  "headline": "A fast and smart alternative for classifying cell types",
+  
+  "image": [
+    "/post/post_02/featured.png"
+  ],
+  
+  "datePublished": "2020-06-12T00:00:00Z",
+  "dateModified": "2020-06-12T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Carlos Biagi Jr"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Carlos Biagi Jr",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>A fast and smart alternative for classifying cell types | Carlos Biagi Jr</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Carlos Biagi Jr</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Carlos Biagi Jr</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>A fast and smart alternative for classifying cell types</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 12, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 347px;">
+  <div style="position: relative">
+    <img src="/post/post_02/featured_hu6b411cd1aa46cf90597374f2d960ec35_983825_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus. According to the 
+<a href="https://www.scrna-tools.org/" target="_blank" rel="noopener">scRNA-tools website</a>, there are 67 cataloged tools for classifying cell types implemented in R, Python, etc. I consider that there are two main types of classifying cell types:</p>
+<ol>
+<li>Using classic known markers, as PECAM1 for Edothelial cells, CD19 for B cells, etc. A website that has a very extensive and complete database is 
+<a href="http://biocc.hrbmu.edu.cn/CellMarker/" target="_blank" rel="noopener">CellMarker</a>, where you can find genes marker based on the literature and experiments. This classification of cell types is based on the high expression of these specific marker genes.</li>
+<li>Using automated methods that infers the cell type. As stated above, you can find a list of these different tools on the 
+<a href="https://www.scrna-tools.org/" target="_blank" rel="noopener">scRNA-tools website</a>.</li>
+</ol>
+<p>The most common way of doing the classification is by identifying the different clusters and doing differential expression analysis of one group against all the others in order to find the genes that are most differentially expressed in each group. In this post I chose to talk to you about a very interesting tool that combines this principle mentioned above with a database of markers for different tissues and cancers. The tool is called scCATCH and the original article can be found 
+<a href="https://www.sciencedirect.com/science/article/pii/S2589004220300663" target="_blank" rel="noopener">here</a> and with the 
+<a href="https://github.com/ZJUFanLab/scCATCH" target="_blank" rel="noopener">GitHub</a> page. An overview of the package is show in <strong>Figure 1</strong> below.</p>
+<p><img src="Overview.png" alt="overview">
+<em>Fig. 1: Overview of scCATCH  (image taken from the original article.)</em></p>
+<p>The tool is implemented as an R package and includes a panel of 353 cell types and related 686 subtypes associated with 184 tissue types, 20,792 cell-specific marker genes and 2,097 references of human and mouse. More informations about the package can be found in the GitHub and paper mentioned above. &ldquo;Basically&rdquo;, the package will find the marker genes for each cluster and associate those genes with the database.</p>
+<p>One of the strategies used in this tool that caught my attention was that instead of calculating the markers for a specific cluster comparing against all the others, it calculates the markers of that cluster against each one individually and joining these information at the end. I tried to implement the tool on some data that I am analyzing but I realized that it was taking a long time to run (approximately 5h for a total of 10k cells with 18 clusters). So I decided to take a closer look at the source code and found that piece of code:</p>
+<p><img src="original.png" alt="original">
+<em>Fig. 2: Step in which the markers for each cluster are calculated.</em></p>
+<p>In summary, this part of the code will calculate the logFC, pvalue using the Wilcox test and the percentage of expression of a specific marker between two clusters. These steps are very time-consuming because are implemented in R, and calculates the Wilcox test for each case. To solve this first I looked for a parallelization parameter in the package, but it is not implemented in the package.</p>
+<p>So to continue using scCATCH more efficiently I edited the source code of the part above (<em>Fig. 2</em>) as shown in <em>Fig. 3</em>:</p>
+<p><img src="new.png" alt="new">
+<em>Fig. 3: Piece of code modified.</em></p>
+<p>The implementation I did is to keep the same calculations, but now using the <em>FindMarkers</em> function of the 
+<a href="https://satijalab.org/seurat/" target="_blank" rel="noopener">Seurat</a> package to perform the Wilcox test and get the pvalue, in addition to calculating the percentage of expression of a specific marker between two clusters. The logFC calculation was maintained as proposed in scCATCH package.</p>
+<p>The package with these modifications can be downloaded 
+<a href="scCATCH_2.0.tar.gz"><strong>here</strong></a> and installed using de following command:</p>
+<pre><code class="language-R">install.packages(&quot;/path/to/package/scCATCH_2.0.tar.gz&quot;, repos = NULL)
+</code></pre>
+<h2 id="markwhyhow-will-this-implementation-improve-the-sccatch-performancemark"><mark>Why/How will this implementation improve the scCATCH performance?</mark></h2>
+<p>There is an R package called 
+<a href="https://cran.r-project.org/web/packages/future/index.html" target="_blank" rel="noopener">Future</a> that provides a lightweight and unified Future API for sequential and parallel processing of R expression. The Seurat package has a tutorial that shows you how to perform 
+<a href="https://satijalab.org/seurat/v3.0/future_vignette.html" target="_blank" rel="noopener">parallelization in Seurat with future</a>, and one of the functions that are enabled for parallelization using the future package is <em>FindMarkers</em>, exactly the one I used in the implementation above. With <strong>Future</strong> is possible to <em>plan</em> differents strategies to parallelize the scCATCH package, like sequential, multisession, multicore, multiprocess, clusters, etc. A more detailed explanation of the plan types can be found in the package 
+<a href="https://cran.r-project.org/web/packages/future/vignettes/future-1-overview.html" target="_blank" rel="noopener">vignette</a>.</p>
+<p>So, one example of the way of using the Future package along with scCATCH is that way:</p>
+<pre><code class="language-R"># Loading packages
+library(Seurat)
+library(future)
+library(scCATCH) 
+
+# Set memory for each worker
+options(future.globals.maxSize = 1000 * 1024^2)
+
+# An example with multicore planning 10 workers
+plan(&quot;multicore&quot;, workers = 10)
+
+# Running scCATCH as default showed in their GitHub page
+clu_markers &lt;- findmarkergenes(object = data,
+                               species = 'Human',
+                               cluster = 'All',
+                               match_CellMatch = FALSE,
+                               cancer = NULL,
+                               tissue = NULL,
+                               cell_min_pct = 0.25,
+                               logfc = 0.25,
+                               pvalue = 0.05)
+                               
+clu_ann &lt;- scCATCH(object = clu_markers$clu_markers,
+                   species = 'Human',
+                   tissue = &quot;Pancreas&quot;)
+</code></pre>
+<p>This is very impressive because in the same dataset without this modification that was taking approximately 5 hours it is now taking less than 10 minutes, with the same satisfactory results!!</p>
+<p>Finally, the result of the <em>scCATCH</em> function is the classification of cell types for different clusters. I realized that for the results of my data there were 2 clusters that the tool had not been able to classify, so when translating these results to Seurat in order to obtain a graphical visualization (tSNE or UMAP), the assignment of the clusters with the cell types were wrong or out of order. From there, I created a function that takes the dataframe resulting from the scCATCH function, along with the Seurat object with the data, and automatically adds the classification information, placing as clusters that have not been classified as unclassified.</p>
+<p>The function is as follows:</p>
+<pre><code class="language-R">convertSeurat &lt;- function(seurat_object, scCATCH_anno) {
+  tmp1 &lt;- data.frame(cluster = levels(Idents(seurat_object)))
+  tmp &lt;- merge(tmp1, scCATCH_anno, by = 'cluster', all = T)
+  tmp$cell_type[which(is.na(tmp$cell_type))] &lt;- &quot;Unclassified&quot;
+  
+  new.cluster.ids &lt;- tmp$cell_type
+  names(new.cluster.ids) &lt;- levels(seurat_object)
+  seurat_object &lt;- RenameIdents(seurat_object, new.cluster.ids)
+  
+  return(seurat_object)
+}
+
+# data is the Seurat object and clu_ann the scCATCH result
+data &lt;- convertSeurat(data, clu_ann)
+</code></pre>
+<p>That&rsquo;s all for today, folks! I hope it was a good introduction to the subject of classifying cell types applied to single-cell data. As stated at the beginning, this subject is very broad, and my intention was to give an overview of a tool that I found very interesting for this function with a smart modification for better performance. As is known, manual classification classification is usually time-consuming, that way having tools that can automatically classify can save time and resources!</p>
+<p>I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!</p>
+<h3 id="did-you-find-this-page-helpful-consider-sharing-it-">Did you find this page helpful? Consider sharing it 🙌</h3>
+
+    </div>
+
+    <div id="disqus_thread"></div>
+<script>
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://cbiagii-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>single-cell | Carlos Biagi Jr</title>
-    <link>/tag/single-cell/</link>
-      <atom:link href="/tag/single-cell/index.xml" rel="self" type="application/rss+xml" />
-    <description>single-cell</description>
+    <title>Seurat | Carlos Biagi Jr</title>
+    <link>/tag/seurat/</link>
+      <atom:link href="/tag/seurat/index.xml" rel="self" type="application/rss+xml" />
+    <description>Seurat</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
-      <title>single-cell</title>
-      <link>/tag/single-cell/</link>
+      <title>Seurat</title>
+      <link>/tag/seurat/</link>
     </image>
     
     <item>

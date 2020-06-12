@@ -5,12 +5,100 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>A fast and smart alternative for classifying cell types</title>
+      <link>/post/post_02/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/post_02/</guid>
+      <description>&lt;p&gt;This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus. According to the 
+&lt;a href=&#34;https://www.scrna-tools.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scRNA-tools website&lt;/a&gt;, there are 67 cataloged tools for classifying cell types implemented in R, Python, etc. I consider that there are two main types of classifying cell types:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Using classic known markers, as PECAM1 for Edothelial cells, CD19 for B cells, etc. A website that has a very extensive and complete database is 
+&lt;a href=&#34;http://biocc.hrbmu.edu.cn/CellMarker/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CellMarker&lt;/a&gt;, where you can find genes marker based on the literature and experiments. This classification of cell types is based on the high expression of these specific marker genes.&lt;/li&gt;
+&lt;li&gt;Using automated methods that infers the cell type. As stated above, you can find a list of these different tools on the 
+&lt;a href=&#34;https://www.scrna-tools.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scRNA-tools website&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The most common way of doing the classification is by identifying the different clusters and doing differential expression analysis of one group against all the others in order to find the genes that are most differentially expressed in each group. In this post I chose to talk to you about a very interesting tool that combines this principle mentioned above with a database of markers for different tissues and cancers. The tool is called scCATCH and the original article can be found 
+&lt;a href=&#34;https://www.sciencedirect.com/science/article/pii/S2589004220300663&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; and with the 
+&lt;a href=&#34;https://github.com/ZJUFanLab/scCATCH&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&lt;/a&gt; page. An overview of the package is show in &lt;strong&gt;Figure 1&lt;/strong&gt; below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Overview.png&#34; alt=&#34;overview&#34;&gt;
+&lt;em&gt;Fig. 1: Overview of scCATCH  (image taken from the original article.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The tool is implemented as an R package and includes a panel of 353 cell types and related 686 subtypes associated with 184 tissue types, 20,792 cell-specific marker genes and 2,097 references of human and mouse. More informations about the package can be found in the GitHub and paper mentioned above. &amp;ldquo;Basically&amp;rdquo;, the package will find the marker genes for each cluster and associate those genes with the database.&lt;/p&gt;
+&lt;p&gt;One of the strategies used in this tool that caught my attention was that instead of calculating the markers for a specific cluster comparing against all the others, it calculates the markers of that cluster against each one individually and joining these information at the end. I tried to implement the tool on some data that I am analyzing but I realized that it was taking a long time to run (approximately 5h for a total of 10k cells with 18 clusters). So I decided to take a closer look at the source code and found that piece of code:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;original.png&#34; alt=&#34;original&#34;&gt;
+&lt;em&gt;Fig. 2: Step in which the markers for each cluster are calculated.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In summary, this part of the code will calculate the logFC, pvalue using the Wilcox test and the percentage of expression of a specific marker between two clusters. These steps are very time-consuming because are implemented in R, and calculates the Wilcox test for each case. To solve this first I looked for a parallelization parameter in the package, but it is not implemented in the package.&lt;/p&gt;
+&lt;p&gt;So to continue using scCATCH more efficiently I edited the source code of the part above (&lt;em&gt;Fig. 2&lt;/em&gt;) as shown in &lt;em&gt;Fig. 3&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;new.png&#34; alt=&#34;new&#34;&gt;
+&lt;em&gt;Fig. 3: Piece of code modified.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The implementation I did is to keep the same calculations, but now using the &lt;em&gt;FindMarkers&lt;/em&gt; function of the 
+&lt;a href=&#34;https://satijalab.org/seurat/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seurat&lt;/a&gt; package to perform the Wilcox test and get the pvalue, in addition to calculating the percentage of expression of a specific marker between two clusters. The logFC calculation was maintained as proposed in scCATCH package.&lt;/p&gt;
+&lt;p&gt;The package with these modifications can be downloaded 
+&lt;a href=&#34;scCATCH_2.0.tar.gz&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt; and installed using de following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;install.packages(&amp;quot;/path/to/package/scCATCH_2.0.tar.gz&amp;quot;, repos = NULL)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;markwhyhow-will-this-implementation-improve-the-sccatch-performancemark&#34;&gt;&lt;mark&gt;Why/How will this implementation improve the scCATCH performance?&lt;/mark&gt;&lt;/h2&gt;
+&lt;p&gt;There is an R package called 
+&lt;a href=&#34;https://cran.r-project.org/web/packages/future/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Future&lt;/a&gt; that provides a lightweight and unified Future API for sequential and parallel processing of R expression. The Seurat package has a tutorial that shows you how to perform 
+&lt;a href=&#34;https://satijalab.org/seurat/v3.0/future_vignette.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;parallelization in Seurat with future&lt;/a&gt;, and one of the functions that are enabled for parallelization using the future package is &lt;em&gt;FindMarkers&lt;/em&gt;, exactly the one I used in the implementation above. With &lt;strong&gt;Future&lt;/strong&gt; is possible to &lt;em&gt;plan&lt;/em&gt; differents strategies to parallelize the scCATCH package, like sequential, multisession, multicore, multiprocess, clusters, etc. A more detailed explanation of the plan types can be found in the package 
+&lt;a href=&#34;https://cran.r-project.org/web/packages/future/vignettes/future-1-overview.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vignette&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, one example of the way of using the Future package along with scCATCH is that way:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;# Loading packages
+library(Seurat)
+library(future)
+library(scCATCH) 
+
+# Set memory for each worker
+options(future.globals.maxSize = 1000 * 1024^2)
+
+# An example with multicore planning 10 workers
+plan(&amp;quot;multicore&amp;quot;, workers = 10)
+
+# Running scCATCH as default showed in their GitHub page
+clu_markers &amp;lt;- findmarkergenes(object = data,
+                               species = &#39;Human&#39;,
+                               cluster = &#39;All&#39;,
+                               match_CellMatch = FALSE,
+                               cancer = NULL,
+                               tissue = NULL,
+                               cell_min_pct = 0.25,
+                               logfc = 0.25,
+                               pvalue = 0.05)
+                               
+clu_ann &amp;lt;- scCATCH(object = clu_markers$clu_markers,
+                   species = &#39;Human&#39;,
+                   tissue = &amp;quot;Pancreas&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is very impressive because in the same dataset without this modification that was taking approximately 5 hours it is now taking less than 10 minutes, with the same satisfactory results!!&lt;/p&gt;
+&lt;p&gt;Finally, the result of the &lt;em&gt;scCATCH&lt;/em&gt; function is the classification of cell types for different clusters. I realized that for the results of my data there were 2 clusters that the tool had not been able to classify, so when translating these results to Seurat in order to obtain a graphical visualization (tSNE or UMAP), the assignment of the clusters with the cell types were wrong or out of order. From there, I created a function that takes the dataframe resulting from the scCATCH function, along with the Seurat object with the data, and automatically adds the classification information, placing as clusters that have not been classified as unclassified.&lt;/p&gt;
+&lt;p&gt;The function is as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;convertSeurat &amp;lt;- function(seurat_object, scCATCH_anno) {
+  tmp1 &amp;lt;- data.frame(cluster = levels(Idents(seurat_object)))
+  tmp &amp;lt;- merge(tmp1, scCATCH_anno, by = &#39;cluster&#39;, all = T)
+  tmp$cell_type[which(is.na(tmp$cell_type))] &amp;lt;- &amp;quot;Unclassified&amp;quot;
+  
+  new.cluster.ids &amp;lt;- tmp$cell_type
+  names(new.cluster.ids) &amp;lt;- levels(seurat_object)
+  seurat_object &amp;lt;- RenameIdents(seurat_object, new.cluster.ids)
+  
+  return(seurat_object)
+}
+
+# data is the Seurat object and clu_ann the scCATCH result
+data &amp;lt;- convertSeurat(data, clu_ann)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&amp;rsquo;s all for today, folks! I hope it was a good introduction to the subject of classifying cell types applied to single-cell data. As stated at the beginning, this subject is very broad, and my intention was to give an overview of a tool that I found very interesting for this function with a smart modification for better performance. As is known, manual classification classification is usually time-consuming, that way having tools that can automatically classify can save time and resources!&lt;/p&gt;
+&lt;p&gt;I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!&lt;/p&gt;
+&lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>Stop your analysis until you read this clustering secret</title>
