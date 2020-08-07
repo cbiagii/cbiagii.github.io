@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>0 | Carlos Biagi Jr</title>
+    <link>/publication-type/0/</link>
+      <atom:link href="/publication-type/0/index.xml" rel="self" type="application/rss+xml" />
+    <description>0</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 07 Aug 2020 15:54:20 +0200</lastBuildDate>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>0</title>
+      <link>/publication-type/0/</link>
+    </image>
+    
+    <item>
+      <title>CeTF</title>
+      <link>/publication/cetf/</link>
+      <pubDate>Fri, 07 Aug 2020 15:54:20 +0200</pubDate>
+      <guid>/publication/cetf/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

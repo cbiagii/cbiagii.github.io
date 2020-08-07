@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>script | Carlos Biagi Jr</title>
+    <link>/tag/script/</link>
+      <atom:link href="/tag/script/index.xml" rel="self" type="application/rss+xml" />
+    <description>script</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>script</title>
+      <link>/tag/script/</link>
+    </image>
+    
+    <item>
+      <title>Integrating R with SLURM job submission</title>
+      <link>/post/post_03/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/post_03/</guid>
+      <description>&lt;p&gt;Sometimes working within an High Performance Computing (HPC) environment is difficult&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Overview.png&#34; alt=&#34;overview&#34;&gt;
+&lt;em&gt;Fig. 1: Overview of scCATCH  (image taken from the original article.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;sampleNames.txt file&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;sample_01
+sample_02
+sample_03
+sample_04
+sample_05
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;SeuratObjects.R script&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;#!/usr/bin/env Rscript
+arguments = commandArgs(trailingOnly=TRUE)
+
+options(future.globals.maxSize = 20 * 1024 ^ 3)
+plan(&amp;quot;multiprocess&amp;quot;, workers = 6)
+
+sample &amp;lt;- as.character(arguments)
+
+
+# Loading packages
+library(Seurat)
+library(future)
+
+# Check if the input is a csv file or a 10x directory
+test &amp;lt;- dir.exists(file.path(&amp;quot;/path/to/datasets&amp;quot;, sample))
+if (test) {
+  data &amp;lt;- CreateSeuratObject(counts = Read10X(data.dir = file.path(&amp;quot;/path/to/datasets&amp;quot;, sample)),
+                             project = sample,
+                             min.cells = 3,
+                             min.features = 200)
+} else {
+  tmp &amp;lt;- list.files(&amp;quot;/path/to/datasets&amp;quot;, full.names = T)
+  data &amp;lt;- CreateSeuratObject(counts = read.table(grep(sample, tmp, value = T), header = T, row.names = 1),
+                             project = sample,
+                             min.cells = 3,
+                             min.features = 200)
+}
+
+
+s.genes &amp;lt;- cc.genes$s.genes
+g2m.genes &amp;lt;- cc.genes$g2m.genes
+
+
+dir.create(file.path(&amp;quot;/path/to/output&amp;quot;, sample))
+
+
+data[[&amp;quot;percent.mt&amp;quot;]] &amp;lt;- PercentageFeatureSet(data, pattern = &amp;quot;^MT-&amp;quot;)
+data &amp;lt;- subset(data, subset = nFeature_RNA &amp;lt; 3000 &amp;amp; percent.mt &amp;lt; 10)
+
+data &amp;lt;- NormalizeData(data, verbose = F)
+
+data &amp;lt;- FindVariableFeatures(data, verbose = F)
+
+data &amp;lt;- CellCycleScoring(data, s.features = s.genes, g2m.features = g2m.genes, set.ident = TRUE)
+
+data &amp;lt;- ScaleData(data, vars.to.regress = c(&amp;quot;nCount_RNA&amp;quot;, &amp;quot;percent.mt&amp;quot;, &amp;quot;S.Score&amp;quot;, &amp;quot;G2M.Score&amp;quot;))
+
+data &amp;lt;- RunPCA(data, verbose = F)
+
+data &amp;lt;- FindNeighbors(data)
+data &amp;lt;- FindClusters(data)
+
+data &amp;lt;- RunTSNE(data, perplexity = 30, dims = 1:30)
+data &amp;lt;- RunUMAP(data, dims = 1:30)
+
+# Save seurat object
+saveRDS(data, file = file.path(&amp;quot;/path/to/output&amp;quot;, sample, paste0(sample, &amp;quot;.rds&amp;quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;submit script&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;library(optparse)
+library(digest)
+
+option_list = list(
+  make_option(c(&amp;quot;-f&amp;quot;, &amp;quot;--file&amp;quot;), type=&amp;quot;character&amp;quot;, default=NULL, 
+              help=&amp;quot;sample names file [default= %default]&amp;quot;, metavar=&amp;quot;character&amp;quot;),
+  make_option(c(&amp;quot;-p&amp;quot;, &amp;quot;--script&amp;quot;), type=&amp;quot;character&amp;quot;, default=NULL, 
+              help=&amp;quot;path to script file [default= %default]&amp;quot;, metavar=&amp;quot;character&amp;quot;),
+  make_option(c(&amp;quot;-c&amp;quot;, &amp;quot;--cpu&amp;quot;), type=&amp;quot;numeric&amp;quot;, default=NULL, 
+              help=&amp;quot;number of cpus per task [default= %default]&amp;quot;, metavar=&amp;quot;numeric&amp;quot;), 
+  make_option(c(&amp;quot;-m&amp;quot;, &amp;quot;--mem&amp;quot;), type=&amp;quot;character&amp;quot;, default=NULL, 
+              help=&amp;quot;number of minimum amount of real memory [default= %default]&amp;quot;, metavar=&amp;quot;character&amp;quot;), 
+  make_option(c(&amp;quot;-t&amp;quot;, &amp;quot;--time&amp;quot;), type=&amp;quot;numeric&amp;quot;, default=NULL, 
+              help=&amp;quot;time limit in minutes [default= %default]&amp;quot;, metavar=&amp;quot;numeric&amp;quot;)
+); 
+
+opt_parser = OptionParser(option_list=option_list);
+opt = parse_args(opt_parser);
+
+if (is.null(opt$file)){
+  print_help(opt_parser)
+  stop(&amp;quot;Input a sample names file.&amp;quot;, call.=FALSE)
+} else if (is.null(opt$script)){
+  print_help(opt_parser)
+  stop(&amp;quot;Input a path to a script file.&amp;quot;, call.=FALSE)
+} else if (is.null(opt$cpu)) {
+  print_help(opt_parser)
+  stop(&amp;quot;Input the number of cpus per task.&amp;quot;, call.=FALSE)
+} else if (is.null(opt$mem)) {
+  print_help(opt_parser)
+  stop(&amp;quot;Input the number of minimum amount of real memory.&amp;quot;, call.=FALSE)
+} else if (is.null(opt$time)) {
+  print_help(opt_parser)
+  stop(&amp;quot;time limit in minutes.&amp;quot;, call.=FALSE)
+}
+
+
+df &amp;lt;- readLines(opt$file)
+jobname &amp;lt;- paste0(&amp;quot;tmp_&amp;quot;, digest(Sys.time(), algo = &amp;quot;xxhash32&amp;quot;))
+
+for (i in seq_along(df)) {
+  #Checkpoint
+  check1 &amp;lt;- file.exists(file.path(&amp;quot;/projects/cangen/coliveir/scRNA_output/SeuratObjects/&amp;quot;, df[i], paste0(df[i], &amp;quot;.rds&amp;quot;)))
+  
+  if (check1 == F) {
+    sink(paste0(&amp;quot;/scratch2/coliveir/&amp;quot;, jobname, &amp;quot;_&amp;quot;, i, &amp;quot;.btc&amp;quot;))
+    
+    cat(&amp;quot;#! /bin/bash -l&amp;quot;, &amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;#SBATCH --job-name &amp;quot;, paste0(jobname, &amp;quot;_&amp;quot;, i)), &amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;#SBATCH --error &amp;quot;, paste0(&amp;quot;/scratch2/coliveir/&amp;quot;, jobname, &amp;quot;_&amp;quot;, i, &amp;quot;.err&amp;quot;)), &amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;#SBATCH --output &amp;quot;, paste0(&amp;quot;/scratch2/coliveir/&amp;quot;, jobname, &amp;quot;_&amp;quot;, i, &amp;quot;.out&amp;quot;), &amp;quot;\n&amp;quot;))
+    cat(paste0(&amp;quot;#SBATCH --cpus-per-task=&amp;quot;, opt$cpu), &amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;#SBATCH --mem=&amp;quot;, opt$mem), &amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;#SBATCH --time=&amp;quot;, opt$time), &amp;quot;\n&amp;quot;)
+    cat(&amp;quot;\n&amp;quot;)
+    cat(&amp;quot;export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK&amp;quot;, &amp;quot;\n&amp;quot;)
+    cat(&amp;quot;\n&amp;quot;)
+    cat(paste0(&amp;quot;R --vanilla -f &amp;quot;, opt$script, &amp;quot; --args &amp;quot;, df[i]), &amp;quot;\n&amp;quot;)
+    cat(&amp;quot;\n&amp;quot;)
+    cat(&amp;quot;echo [$(date)] Starting execution of sample&amp;quot;, &amp;quot;\n&amp;quot;)
+    
+    sink()
+    
+    system(paste0(&amp;quot;sbatch /scratch2/coliveir/&amp;quot;, jobname, &amp;quot;_&amp;quot;, i, &amp;quot;.btc&amp;quot;))
+  } else {
+    next()
+  } 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;How submit&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Rscript --vanilla /projects/cangen/coliveir/submitJob_SeuratObject.R \ 
+        --file /projects/cangen/coliveir/samplesNames.txt \ 
+        --script /projects/cangen/coliveir/scripts/SeuratObject.R \ 
+        --cpu 8 \ 
+        --mem 60G \ 
+        --time 720
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I hope it may have helped you to understand a little this whole process, and mainly that with this function it may have facilitated the use of the SCCAF tool. Any questions, comments, suggestions, criticisms, etc., feel free!&lt;/p&gt;
+&lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
