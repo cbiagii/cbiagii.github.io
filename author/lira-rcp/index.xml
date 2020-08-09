@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lira RCP | Carlos Biagi Jr</title>
+    <link>/author/lira-rcp/</link>
+      <atom:link href="/author/lira-rcp/index.xml" rel="self" type="application/rss+xml" />
+    <description>Lira RCP</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>Lira RCP</title>
+      <link>/author/lira-rcp/</link>
+    </image>
+    
+    <item>
+      <title>A simplified approach using Taqman low-density array for medulloblastoma subgrouping</title>
+      <link>/publication/medulloblastoma/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/medulloblastoma/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

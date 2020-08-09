@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moretti ML | Carlos Biagi Jr</title>
+    <link>/author/moretti-ml/</link>
+      <atom:link href="/author/moretti-ml/index.xml" rel="self" type="application/rss+xml" />
+    <description>Moretti ML</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>Moretti ML</title>
+      <link>/author/moretti-ml/</link>
+    </image>
+    
+    <item>
+      <title>Elevated Glucose Levels Favor SARS-CoV-2 Infection and Monocyte Response through a HIF-1α/Glycolysis-Dependent Axis</title>
+      <link>/publication/covid/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/covid/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leopoldino AM | Carlos Biagi Jr</title>
+    <link>/author/leopoldino-am/</link>
+      <atom:link href="/author/leopoldino-am/index.xml" rel="self" type="application/rss+xml" />
+    <description>Leopoldino AM</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>Leopoldino AM</title>
+      <link>/author/leopoldino-am/</link>
+    </image>
+    
+    <item>
+      <title>Mitochondrial transcription factor A (TFAM) shapes metabolic and invasion gene signatures in melanoma</title>
+      <link>/publication/tfam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/publication/tfam/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

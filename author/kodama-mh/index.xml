@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kodama MH | Carlos Biagi Jr</title>
+    <link>/author/kodama-mh/</link>
+      <atom:link href="/author/kodama-mh/index.xml" rel="self" type="application/rss+xml" />
+    <description>Kodama MH</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 30 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <title>Kodama MH</title>
+      <link>/author/kodama-mh/</link>
+    </image>
+    
+    <item>
+      <title>Ultraconserved long non-coding RNA uc.112 is highly expressed in childhood T versus B-cell acute lymphoblastic leukemia</title>
+      <link>/publication/ultraconserved/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/ultraconserved/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
