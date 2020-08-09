@@ -288,36 +288,6 @@
   </url>
   
   <url>
-    <loc>/post/post_03/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tag/r/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tag/script/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tag/slurm/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/post_02/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
@@ -338,6 +308,16 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/r/</loc>
+    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tag/sccatch/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
@@ -349,6 +329,11 @@
   
   <url>
     <loc>/tag/single-cell/</loc>
+    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -613,25 +598,53 @@
   </url>
   
   <url>
-    <loc>/privacy/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/terms/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/author/barros-ii/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/author/biagi-cao-jr/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/author/brotto-db/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/leopoldino-am/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/tfam/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/molfetta-ga/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/muys-br/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/peronni-kc/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/west-ap/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/west-lc/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -643,35 +656,7 @@
   </url>
   
   <url>
-    <loc>/author/leopoldino-am/</loc>
-  </url>
-  
-  <url>
-    <loc>/publication/tfam/</loc>
-  </url>
-  
-  <url>
-    <loc>/author/molfetta-ga/</loc>
-  </url>
-  
-  <url>
-    <loc>/author/muys-br/</loc>
-  </url>
-  
-  <url>
-    <loc>/author/peronni-kc/</loc>
-  </url>
-  
-  <url>
     <loc>/talk/</loc>
-  </url>
-  
-  <url>
-    <loc>/author/west-ap/</loc>
-  </url>
-  
-  <url>
-    <loc>/author/west-lc/</loc>
   </url>
   
 </urlset>

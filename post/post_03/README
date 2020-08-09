@@ -1,1 +1,0 @@
-Rscript --vanilla /projects/cangen/coliveir/submitJob_SeuratObject.R -f /projects/cangen/coliveir/samplesNames.txt -p /projects/cangen/coliveir/scripts/SeuratObject.R -c 8 -m 60G -t 720
