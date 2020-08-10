@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wilson Araújo Silva Jr | Carlos Biagi Jr</title>
-    <link>/author/wilson-araujo-silva-jr/</link>
-      <atom:link href="/author/wilson-araujo-silva-jr/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/author/wilson-araujo-silva-jr/</link>
+      <atom:link href="https://cbiagii.github.io/author/wilson-araujo-silva-jr/index.xml" rel="self" type="application/rss+xml" />
     <description>Wilson Araújo Silva Jr</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>Wilson Araújo Silva Jr</title>
-      <link>/author/wilson-araujo-silva-jr/</link>
+      <link>https://cbiagii.github.io/author/wilson-araujo-silva-jr/</link>
     </image>
     
     <item>
       <title>CeTF: an R package to Coexpression for Transcription Factors using Regulatory Impact Factors (RIF) and Partial Correlation and Information (PCIT) analysis</title>
-      <link>/publication/cetf/</link>
+      <link>https://cbiagii.github.io/publication/cetf/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/cetf/</guid>
+      <guid>https://cbiagii.github.io/publication/cetf/</guid>
       <description></description>
     </item>
     

@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects | Carlos Biagi Jr</title>
-    <link>/project/</link>
-      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/project/</link>
+      <atom:link href="https://cbiagii.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 09 Aug 2020 13:08:40 +0200</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
-      <link>/project/</link>
+      <link>https://cbiagii.github.io/project/</link>
     </image>
     
     <item>
       <title>CeTF</title>
-      <link>/project/cetf/</link>
+      <link>https://cbiagii.github.io/project/cetf/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/cetf/</guid>
+      <guid>https://cbiagii.github.io/project/cetf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>/project/docker/</link>
+      <link>https://cbiagii.github.io/project/docker/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/docker/</guid>
+      <guid>https://cbiagii.github.io/project/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>scCeTF</title>
-      <link>/project/sccetf/</link>
+      <link>https://cbiagii.github.io/project/sccetf/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/sccetf/</guid>
+      <guid>https://cbiagii.github.io/project/sccetf/</guid>
       <description></description>
     </item>
     

@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>de Biagi CAO Jr | Carlos Biagi Jr</title>
-    <link>/author/de-biagi-cao-jr/</link>
-      <atom:link href="/author/de-biagi-cao-jr/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/author/de-biagi-cao-jr/</link>
+      <atom:link href="https://cbiagii.github.io/author/de-biagi-cao-jr/index.xml" rel="self" type="application/rss+xml" />
     <description>de Biagi CAO Jr</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 05 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>de Biagi CAO Jr</title>
-      <link>/author/de-biagi-cao-jr/</link>
+      <link>https://cbiagii.github.io/author/de-biagi-cao-jr/</link>
     </image>
     
     <item>
       <title>Whole transcriptome analysis reveals correlation of long noncoding RNA ZEB1-AS1 with invasive profile in melanoma</title>
-      <link>/publication/zeb1/</link>
+      <link>https://cbiagii.github.io/publication/zeb1/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/zeb1/</guid>
+      <guid>https://cbiagii.github.io/publication/zeb1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A simplified approach using Taqman low-density array for medulloblastoma subgrouping</title>
-      <link>/publication/medulloblastoma/</link>
+      <link>https://cbiagii.github.io/publication/medulloblastoma/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/medulloblastoma/</guid>
+      <guid>https://cbiagii.github.io/publication/medulloblastoma/</guid>
       <description></description>
     </item>
     

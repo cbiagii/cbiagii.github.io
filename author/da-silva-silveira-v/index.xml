@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>da Silva Silveira V | Carlos Biagi Jr</title>
-    <link>/author/da-silva-silveira-v/</link>
-      <atom:link href="/author/da-silva-silveira-v/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/author/da-silva-silveira-v/</link>
+      <atom:link href="https://cbiagii.github.io/author/da-silva-silveira-v/index.xml" rel="self" type="application/rss+xml" />
     <description>da Silva Silveira V</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>da Silva Silveira V</title>
-      <link>/author/da-silva-silveira-v/</link>
+      <link>https://cbiagii.github.io/author/da-silva-silveira-v/</link>
     </image>
     
     <item>
       <title>A simplified approach using Taqman low-density array for medulloblastoma subgrouping</title>
-      <link>/publication/medulloblastoma/</link>
+      <link>https://cbiagii.github.io/publication/medulloblastoma/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/medulloblastoma/</guid>
+      <guid>https://cbiagii.github.io/publication/medulloblastoma/</guid>
       <description></description>
     </item>
     

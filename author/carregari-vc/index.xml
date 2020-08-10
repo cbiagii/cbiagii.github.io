@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Carregari VC | Carlos Biagi Jr</title>
-    <link>/author/carregari-vc/</link>
-      <atom:link href="/author/carregari-vc/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/author/carregari-vc/</link>
+      <atom:link href="https://cbiagii.github.io/author/carregari-vc/index.xml" rel="self" type="application/rss+xml" />
     <description>Carregari VC</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>Carregari VC</title>
-      <link>/author/carregari-vc/</link>
+      <link>https://cbiagii.github.io/author/carregari-vc/</link>
     </image>
     
     <item>
       <title>Elevated Glucose Levels Favor SARS-CoV-2 Infection and Monocyte Response through a HIF-1α/Glycolysis-Dependent Axis</title>
-      <link>/publication/covid/</link>
+      <link>https://cbiagii.github.io/publication/covid/</link>
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/covid/</guid>
+      <guid>https://cbiagii.github.io/publication/covid/</guid>
       <description></description>
     </item>
     

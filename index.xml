@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Carlos Biagi Jr</title>
-    <link>/</link>
-      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://cbiagii.github.io/</link>
+      <atom:link href="https://cbiagii.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Carlos Biagi Jr</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 09 Aug 2020 13:08:40 +0200</lastBuildDate>
     <image>
-      <url>/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
+      <url>https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_512x512_fill_lanczos_center_2.png</url>
       <title>Carlos Biagi Jr</title>
-      <link>/</link>
+      <link>https://cbiagii.github.io/</link>
     </image>
     
     <item>
       <title>Example Page 1</title>
-      <link>/courses/example/example1/</link>
+      <link>https://cbiagii.github.io/courses/example/example1/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>/courses/example/example1/</guid>
+      <guid>https://cbiagii.github.io/courses/example/example1/</guid>
       <description>&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
 &lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
@@ -35,9 +35,9 @@
     
     <item>
       <title>Example Page 2</title>
-      <link>/courses/example/example2/</link>
+      <link>https://cbiagii.github.io/courses/example/example2/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>/courses/example/example2/</guid>
+      <guid>https://cbiagii.github.io/courses/example/example2/</guid>
       <description>&lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;
 &lt;h2 id=&#34;tip-3&#34;&gt;Tip 3&lt;/h2&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
@@ -56,41 +56,41 @@
     
     <item>
       <title>CeTF</title>
-      <link>/project/cetf/</link>
+      <link>https://cbiagii.github.io/project/cetf/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/cetf/</guid>
+      <guid>https://cbiagii.github.io/project/cetf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>/project/docker/</link>
+      <link>https://cbiagii.github.io/project/docker/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/docker/</guid>
+      <guid>https://cbiagii.github.io/project/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>scCeTF</title>
-      <link>/project/sccetf/</link>
+      <link>https://cbiagii.github.io/project/sccetf/</link>
       <pubDate>Sun, 09 Aug 2020 13:08:40 +0200</pubDate>
-      <guid>/project/sccetf/</guid>
+      <guid>https://cbiagii.github.io/project/sccetf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Elevated Glucose Levels Favor SARS-CoV-2 Infection and Monocyte Response through a HIF-1α/Glycolysis-Dependent Axis</title>
-      <link>/publication/covid/</link>
+      <link>https://cbiagii.github.io/publication/covid/</link>
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/covid/</guid>
+      <guid>https://cbiagii.github.io/publication/covid/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A fast and smart alternative for classifying cell types</title>
-      <link>/post/post_02/</link>
+      <link>https://cbiagii.github.io/post/post_02/</link>
       <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/post/post_02/</guid>
+      <guid>https://cbiagii.github.io/post/post_02/</guid>
       <description>&lt;p&gt;This post is about a big question in single-cell analysis: how to classify/identify the cell types of my data? I would like to have an answer, but there is still no consensus. According to the 
 &lt;a href=&#34;https://www.scrna-tools.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scRNA-tools website&lt;/a&gt;, there are 67 cataloged tools for classifying cell types implemented in R, Python, etc. I consider that there are two main types of classifying cell types:&lt;/p&gt;
 &lt;ol&gt;
@@ -176,9 +176,9 @@ data &amp;lt;- convertSeurat(data, clu_ann)
     
     <item>
       <title>Stop your analysis until you read this clustering secret</title>
-      <link>/post/post_01/</link>
+      <link>https://cbiagii.github.io/post/post_01/</link>
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/post_01/</guid>
+      <guid>https://cbiagii.github.io/post/post_01/</guid>
       <description>&lt;p&gt;I had been analyzing the data for a while with my friend 
 &lt;a href=&#34;https://twitter.com/cleidson_alves&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cleidson&lt;/a&gt; and we always asked ourselves, how to determine the optimal number of clusters for our data? I think this is one of the main questions when working with single-cell data. Although some better known tools like Seurat (R) and Scanpy (Python) have different methods of clustering, they do not return the optimal number of clusters. What I had been doing previously was generating different resolutions with the data and checking with the 
 &lt;a href=&#34;https://github.com/lazappi/clustree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;clustree&lt;/a&gt; package in R how the clusters were split from the smallest to the maximum resolution that I had predetermined.&lt;/p&gt;
@@ -334,49 +334,49 @@ conda deactivate
     
     <item>
       <title>CeTF: an R package to Coexpression for Transcription Factors using Regulatory Impact Factors (RIF) and Partial Correlation and Information (PCIT) analysis</title>
-      <link>/publication/cetf/</link>
+      <link>https://cbiagii.github.io/publication/cetf/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/cetf/</guid>
+      <guid>https://cbiagii.github.io/publication/cetf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ultraconserved long non-coding RNA uc.112 is highly expressed in childhood T versus B-cell acute lymphoblastic leukemia</title>
-      <link>/publication/ultraconserved/</link>
+      <link>https://cbiagii.github.io/publication/ultraconserved/</link>
       <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/ultraconserved/</guid>
+      <guid>https://cbiagii.github.io/publication/ultraconserved/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Whole transcriptome analysis reveals correlation of long noncoding RNA ZEB1-AS1 with invasive profile in melanoma</title>
-      <link>/publication/zeb1/</link>
+      <link>https://cbiagii.github.io/publication/zeb1/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/zeb1/</guid>
+      <guid>https://cbiagii.github.io/publication/zeb1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A simplified approach using Taqman low-density array for medulloblastoma subgrouping</title>
-      <link>/publication/medulloblastoma/</link>
+      <link>https://cbiagii.github.io/publication/medulloblastoma/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/medulloblastoma/</guid>
+      <guid>https://cbiagii.github.io/publication/medulloblastoma/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/projects/</link>
+      <link>https://cbiagii.github.io/projects/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/projects/</guid>
+      <guid>https://cbiagii.github.io/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mitochondrial transcription factor A (TFAM) shapes metabolic and invasion gene signatures in melanoma</title>
-      <link>/publication/tfam/</link>
+      <link>https://cbiagii.github.io/publication/tfam/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/tfam/</guid>
+      <guid>https://cbiagii.github.io/publication/tfam/</guid>
       <description></description>
     </item>
     
