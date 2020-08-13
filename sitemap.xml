@@ -38,11 +38,6 @@
   </url>
   
   <url>
-    <loc>https://cbiagii.github.io/project/sccetf/</loc>
-    <lastmod>2020-08-09T13:08:40+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cbiagii.github.io/publication-type/2/</loc>
     <lastmod>2020-07-17T00:00:00+00:00</lastmod>
   </url>
@@ -288,6 +283,36 @@
   </url>
   
   <url>
+    <loc>https://cbiagii.github.io/post/post_03/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cbiagii.github.io/post/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cbiagii.github.io/tag/r/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cbiagii.github.io/tag/script/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cbiagii.github.io/tag/slurm/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cbiagii.github.io/tags/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cbiagii.github.io/post/post_02/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
@@ -308,16 +333,6 @@
   </url>
   
   <url>
-    <loc>https://cbiagii.github.io/post/</loc>
-    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cbiagii.github.io/tag/r/</loc>
-    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cbiagii.github.io/tag/sccatch/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
@@ -329,11 +344,6 @@
   
   <url>
     <loc>https://cbiagii.github.io/tag/single-cell/</loc>
-    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cbiagii.github.io/tags/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
   </url>
   

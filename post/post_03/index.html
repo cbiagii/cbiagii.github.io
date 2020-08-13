@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="This package provides the necessary functions for performing the Partial Correlation coefficient with Information Theory (PCIT) (Reverter and Chan 2008) and Regulatory Impact Factors (RIF) (Reverter et al. 2010) algorithm. The PCIT algorithm identifies meaningful correlations to define edges in a weighted network and can be applied to any correlation-based network including but not limited to gene co-expression networks, while the RIF algorithm identify critical Transcription Factors (TF) from gene expression data. These two algorithms when combined provide a very relevant layer of information for gene expression studies (Microarray, RNA-seq and single-cell RNA-seq data).">
+  <meta name="description" content="Sometimes working with R within an High-Performance Computing (HPC) environment is difficult. If you use an HPC or server that uses the Slurm Workload Manager (SLURM) system for job submission, I will present an alternative that helps me a lot when I need to submit some analysis to the job queue.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://cbiagii.github.io/project/cetf/">
+  <link rel="alternate" hreflang="en-us" href="https://cbiagii.github.io/post/post_03/">
 
   
 
@@ -45,6 +45,9 @@
   
 
   
+  
+  
+  <script src="/js/mathjax-config.js"></script>
   
 
   
@@ -185,9 +188,9 @@
 
       
       
-        
-      
 
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -271,7 +274,7 @@
   <link rel="icon" type="image/png" href="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://cbiagii.github.io/project/cetf/">
+  <link rel="canonical" href="https://cbiagii.github.io/post/post_03/">
 
   
   
@@ -286,15 +289,15 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Carlos Biagi Jr">
-  <meta property="og:url" content="https://cbiagii.github.io/project/cetf/">
-  <meta property="og:title" content="CeTF | Carlos Biagi Jr">
-  <meta property="og:description" content="This package provides the necessary functions for performing the Partial Correlation coefficient with Information Theory (PCIT) (Reverter and Chan 2008) and Regulatory Impact Factors (RIF) (Reverter et al. 2010) algorithm. The PCIT algorithm identifies meaningful correlations to define edges in a weighted network and can be applied to any correlation-based network including but not limited to gene co-expression networks, while the RIF algorithm identify critical Transcription Factors (TF) from gene expression data. These two algorithms when combined provide a very relevant layer of information for gene expression studies (Microarray, RNA-seq and single-cell RNA-seq data)."><meta property="og:image" content="https://cbiagii.github.io/project/cetf/featured.png">
-  <meta property="twitter:image" content="https://cbiagii.github.io/project/cetf/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://cbiagii.github.io/post/post_03/">
+  <meta property="og:title" content="Integrating R with SLURM job submission | Carlos Biagi Jr">
+  <meta property="og:description" content="Sometimes working with R within an High-Performance Computing (HPC) environment is difficult. If you use an HPC or server that uses the Slurm Workload Manager (SLURM) system for job submission, I will present an alternative that helps me a lot when I need to submit some analysis to the job queue."><meta property="og:image" content="https://cbiagii.github.io/post/post_03/featured.png">
+  <meta property="twitter:image" content="https://cbiagii.github.io/post/post_03/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-08-09T13:08:40&#43;02:00">
+      <meta property="article:published_time" content="2020-06-29T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-08-09T13:08:40&#43;02:00">
+    <meta property="article:modified_time" content="2020-06-29T00:00:00&#43;00:00">
   
 
   
@@ -306,6 +309,8 @@
 
 
 
+
+  
 
 
 
@@ -313,19 +318,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://cbiagii.github.io/project/cetf/"
+    "@id": "https://cbiagii.github.io/post/post_03/"
   },
-  "headline": "CeTF",
+  "headline": "Integrating R with SLURM job submission",
   
   "image": [
-    "https://cbiagii.github.io/project/cetf/featured.png"
+    "https://cbiagii.github.io/post/post_03/featured.png"
   ],
   
-  "datePublished": "2020-08-09T13:08:40+02:00",
-  "dateModified": "2020-08-09T13:08:40+02:00",
+  "datePublished": "2020-06-29T00:00:00Z",
+  "dateModified": "2020-06-29T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -340,7 +345,7 @@
       "url": "https://cbiagii.github.io/images/icon_huce239040eb2a10cf8e49f362a5f47bf9_18820_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "This package provides the necessary functions for performing the Partial Correlation coefficient with Information Theory (PCIT) (Reverter and Chan 2008) and Regulatory Impact Factors (RIF) (Reverter et al. 2010) algorithm. The PCIT algorithm identifies meaningful correlations to define edges in a weighted network and can be applied to any correlation-based network including but not limited to gene co-expression networks, while the RIF algorithm identify critical Transcription Factors (TF) from gene expression data. These two algorithms when combined provide a very relevant layer of information for gene expression studies (Microarray, RNA-seq and single-cell RNA-seq data)."
+  "description": "Sometimes working with R within an High-Performance Computing (HPC) environment is difficult. If you use an HPC or server that uses the Slurm Workload Manager (SLURM) system for job submission, I will present an alternative that helps me a lot when I need to submit some analysis to the job queue."
 }
 </script>
 
@@ -358,7 +363,7 @@
 
 
 
-  <title>CeTF | Carlos Biagi Jr</title>
+  <title>Integrating R with SLURM job submission | Carlos Biagi Jr</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -480,7 +485,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/post/"><span>Posts</span></a>
+          <a class="nav-link  active" href="/post/"><span>Posts</span></a>
         </li>
 
         
@@ -570,7 +575,7 @@
 </nav>
 
 
-  <article class="article article-project">
+  <article class="article">
 
   
 
@@ -600,7 +605,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>CeTF</h1>
+  <h1>Integrating R with SLURM job submission</h1>
 
   
 
@@ -618,13 +623,18 @@
     
       
     
-    Aug 9, 2020
+    Jun 29, 2020
   </span>
   
 
   
 
   
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
 
   
   
@@ -649,48 +659,13 @@
 
 
 
-<div class="btn-links mb-3">
-  
-  <a class="btn btn-outline-primary my-1" href="http://cbiagii.github.io/CeTF/" target="_blank" rel="noopener">Go to Project Site</a>
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 
 
-</div>
-
-
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 810px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 347px;">
   <div style="position: relative">
-    <img src="/project/cetf/featured_hu6e2c523d2474a8274eaa49ea751fd7f1_644226_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    <img src="/post/post_03/featured_hu54f7f5316815ad4d888b3b05e174342e_258216_720x0_resize_lanczos_2.png" alt="" class="featured-image">
     
   </div>
 </div>
@@ -700,7 +675,161 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <p>Sometimes working with R within an High-Performance Computing (HPC) environment is difficult. If you use an HPC or server that uses the Slurm Workload Manager (SLURM) system for job submission, I will present an alternative that helps me a lot when I need to submit some analysis to the job queue. Let&rsquo;s create a situation here: imagine that you have 5 different single-cell data or 5 samples from different patients, and, starting from the raw count file or the files provided by 10X genomics, you want to pre-process the data using the 
+<a href="https://satijalab.org/seurat/v3.2/pbmc3k_tutorial.html" target="_blank" rel="noopener">Seurat standard pipeline</a>.</p>
+<p>First, we will have to create a file that here we will call <strong>sampleName.txt</strong>, which contains the names of the samples. Below is an example of this very simple file:</p>
+<pre><code class="language-txt">sample_01
+sample_02
+sample_03
+sample_04
+sample_05
+</code></pre>
+<p>Then a file called <strong>SeuratPreProcess.R</strong> should be created, which will contain the script with the standard Seurat commands. An example of the script is below:</p>
+<pre><code class="language-R">#!/usr/bin/env Rscript
+arguments = commandArgs(trailingOnly=TRUE)
+
+options(future.globals.maxSize = 20 * 1024 ^ 3)
+plan(&quot;multiprocess&quot;, workers = 6)
+
+sample &lt;- as.character(arguments)
+
+# Loading packages
+library(Seurat)
+library(future)
+
+# Check if the input is a csv file or a 10x directory
+test &lt;- dir.exists(file.path(&quot;/path/to/datasets&quot;, sample))
+if (test) {
+  data &lt;- CreateSeuratObject(counts = Read10X(data.dir = file.path(&quot;/path/to/datasets&quot;, sample)),
+                             project = sample,
+                             min.cells = 3,
+                             min.features = 200)
+} else {
+  tmp &lt;- list.files(&quot;/path/to/datasets&quot;, full.names = T)
+  data &lt;- CreateSeuratObject(counts = read.table(grep(sample, tmp, value = T), header = T, row.names = 1),
+                             project = sample,
+                             min.cells = 3,
+                             min.features = 200)
+}
+
+s.genes &lt;- cc.genes$s.genes
+g2m.genes &lt;- cc.genes$g2m.genes
+
+dir.create(file.path(&quot;/path/to/output&quot;, sample))
+
+data[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(data, pattern = &quot;^MT-&quot;)
+data &lt;- subset(data, subset = nFeature_RNA &lt; 3000 &amp; percent.mt &lt; 10)
+
+data &lt;- NormalizeData(data, verbose = F)
+
+data &lt;- FindVariableFeatures(data, verbose = F)
+
+data &lt;- CellCycleScoring(data, s.features = s.genes, g2m.features = g2m.genes, set.ident = TRUE)
+
+data &lt;- ScaleData(data, vars.to.regress = c(&quot;nCount_RNA&quot;, &quot;percent.mt&quot;, &quot;S.Score&quot;, &quot;G2M.Score&quot;))
+
+data &lt;- RunPCA(data, verbose = F)
+
+data &lt;- FindNeighbors(data)
+data &lt;- FindClusters(data)
+
+data &lt;- RunTSNE(data, perplexity = 30, dims = 1:30)
+data &lt;- RunUMAP(data, dims = 1:30)
+
+# Save seurat object
+saveRDS(data, file = file.path(&quot;/path/to/output&quot;, sample, paste0(sample, &quot;.rds&quot;)))
+</code></pre>
+<p>Here I draw your attention to some details of the script:</p>
+<ol>
+<li>The first line is the 
+<a href="https://en.wikipedia.org/wiki/Shebang_%28Unix%29." target="_blank" rel="noopener">shebang line</a>, and the second one indicates that the script will receive the sample name as arguments as input.</li>
+</ol>
+<pre><code class="language-R">#!/usr/bin/env Rscript
+arguments = commandArgs(trailingOnly=TRUE)
+</code></pre>
+<ol start="2">
+<li>Changes the <em>/path/to/output</em> variable pointing to the directory that contains the sample folders.</li>
+</ol>
+<p>The next step is to create a script named <strong>submitJob_SeuratPreProcess.R</strong>. This script has the function of creating the <em>btc</em> file for the job submission.</p>
+<pre><code class="language-R">library(optparse)
+library(digest)
+
+option_list = list(
+  make_option(c(&quot;-f&quot;, &quot;--file&quot;), type=&quot;character&quot;, default=NULL, 
+              help=&quot;sample names file [default= %default]&quot;, metavar=&quot;character&quot;),
+  make_option(c(&quot;-p&quot;, &quot;--script&quot;), type=&quot;character&quot;, default=NULL, 
+              help=&quot;path to script file [default= %default]&quot;, metavar=&quot;character&quot;),
+  make_option(c(&quot;-c&quot;, &quot;--cpu&quot;), type=&quot;numeric&quot;, default=NULL, 
+              help=&quot;number of cpus per task [default= %default]&quot;, metavar=&quot;numeric&quot;), 
+  make_option(c(&quot;-m&quot;, &quot;--mem&quot;), type=&quot;character&quot;, default=NULL, 
+              help=&quot;number of minimum amount of real memory [default= %default]&quot;, metavar=&quot;character&quot;), 
+  make_option(c(&quot;-t&quot;, &quot;--time&quot;), type=&quot;numeric&quot;, default=NULL, 
+              help=&quot;time limit in minutes [default= %default]&quot;, metavar=&quot;numeric&quot;)
+); 
+
+opt_parser = OptionParser(option_list=option_list);
+opt = parse_args(opt_parser);
+
+if (is.null(opt$file)){
+  print_help(opt_parser)
+  stop(&quot;Input a sample names file.&quot;, call.=FALSE)
+} else if (is.null(opt$script)){
+  print_help(opt_parser)
+  stop(&quot;Input a path to a script file.&quot;, call.=FALSE)
+} else if (is.null(opt$cpu)) {
+  print_help(opt_parser)
+  stop(&quot;Input the number of cpus per task.&quot;, call.=FALSE)
+} else if (is.null(opt$mem)) {
+  print_help(opt_parser)
+  stop(&quot;Input the number of minimum amount of real memory.&quot;, call.=FALSE)
+} else if (is.null(opt$time)) {
+  print_help(opt_parser)
+  stop(&quot;time limit in minutes.&quot;, call.=FALSE)
+}
+
+df &lt;- readLines(opt$file)
+jobname &lt;- paste0(&quot;tmp_&quot;, digest(Sys.time(), algo = &quot;xxhash32&quot;))
+
+for (i in seq_along(df)) {
+    sink(paste0(&quot;/scratch/biagi/&quot;, jobname, &quot;_&quot;, i, &quot;.btc&quot;))
+    
+    cat(&quot;#! /bin/bash -l&quot;, &quot;\n&quot;)
+    cat(paste0(&quot;#SBATCH --job-name &quot;, paste0(jobname, &quot;_&quot;, i)), &quot;\n&quot;)
+    cat(paste0(&quot;#SBATCH --error &quot;, paste0(&quot;/scratch/biagi/&quot;, jobname, &quot;_&quot;, i, &quot;.err&quot;)), &quot;\n&quot;)
+    cat(paste0(&quot;#SBATCH --output &quot;, paste0(&quot;/scratch/biagi/&quot;, jobname, &quot;_&quot;, i, &quot;.out&quot;), &quot;\n&quot;))
+    cat(paste0(&quot;#SBATCH --cpus-per-task=&quot;, opt$cpu), &quot;\n&quot;)
+    cat(paste0(&quot;#SBATCH --mem=&quot;, opt$mem), &quot;\n&quot;)
+    cat(paste0(&quot;#SBATCH --time=&quot;, opt$time), &quot;\n&quot;)
+    cat(&quot;\n&quot;)
+    cat(paste0(&quot;R --vanilla -f &quot;, opt$script, &quot; --args &quot;, df[i]), &quot;\n&quot;)
+    cat(&quot;\n&quot;)
+    cat(&quot;echo [$(date)] Starting execution of sample&quot;, &quot;\n&quot;)
+    
+    sink()
+    
+    system(paste0(&quot;sbatch /scratch/biagi/&quot;, jobname, &quot;_&quot;, i, &quot;.btc&quot;))
+}
+</code></pre>
+<p>The above script has the following options:</p>
+<ul>
+<li><strong>-f</strong> or <strong>&ndash;file</strong>: sample name file (for example the previously created file named <em>sampleName.txt</em>);</li>
+<li><strong>-p</strong> or <strong>&ndash;script</strong>: path to script file (for example the previously created file named <em>SeuratPreProcess.R</em>);</li>
+<li><strong>-c</strong> or <strong>&ndash;cpu</strong>: number of cpus per task to be used in HPC/server;</li>
+<li><strong>-m</strong> or <strong>&ndash;mem</strong>: number of minimum amount of real memory to be used in HPC/server;</li>
+<li><strong>-t</strong> ot <strong>&ndash;time</strong>: time limit in minutes to run the script in HPC/server.</li>
+</ul>
+<p>The script will create an random btc and logs files name (<em>xxhash32 algorithm</em>) to save in any chosen directory. I prefer to save in the server&rsquo;s scratch folder, because after a certain time these files are deleted. Remembering that the options in the btc file can be modified in the script, just follow the same pattern as the existing commands.</p>
+<p>Finally, we will gather all the scripts and information generated above, to submit our jobs. Running this command, 5 jobs from the 5 samples of the different patients will be submitted to the queue, and as soon as they have resources they will be run. Submission is very simple, and can be done using the following command:</p>
+<pre><code class="language-bash">Rscript --vanilla /path/to/folder/submitJob_SeuratPreProcess.R \ 
+        --file /projects/cangen/coliveir/sampleName.txt \ 
+        --script /projects/cangen/coliveir/scripts/SeuratPreProcess.R \ 
+        --cpu 24 \ 
+        --mem 120G \ 
+        --time 720
+</code></pre>
+<p>Remembering again that this is an application that can be easily customized for any script in R. Each step can be modified according to your needs and the available resources. I hope it may have helped you to understand this integration between R scripts and job submission. It really helps me daily in the analysis and I found it interesting to share. Any questions, comments, suggestions, criticisms, etc., feel free!</p>
+<h3 id="did-you-find-this-page-helpful-consider-sharing-it-">Did you find this page helpful? Consider sharing it 🙌</h3>
+
     </div>
 
     
@@ -709,6 +838,16 @@
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/slurm/">SLURM</a>
+  
+  <a class="badge badge-light" href="/tag/script/">script</a>
+  
+</div>
 
 
 
@@ -723,7 +862,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://cbiagii.github.io/project/cetf/&amp;text=CeTF" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://cbiagii.github.io/post/post_03/&amp;text=Integrating%20R%20with%20SLURM%20job%20submission" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -736,7 +875,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://cbiagii.github.io/project/cetf/&amp;t=CeTF" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://cbiagii.github.io/post/post_03/&amp;t=Integrating%20R%20with%20SLURM%20job%20submission" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -749,7 +888,7 @@
       
       
       <li>
-        <a href="mailto:?subject=CeTF&amp;body=https://cbiagii.github.io/project/cetf/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Integrating%20R%20with%20SLURM%20job%20submission&amp;body=https://cbiagii.github.io/post/post_03/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -762,7 +901,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://cbiagii.github.io/project/cetf/&amp;title=CeTF" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://cbiagii.github.io/post/post_03/&amp;title=Integrating%20R%20with%20SLURM%20job%20submission" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -775,7 +914,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=CeTF%20https://cbiagii.github.io/project/cetf/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Integrating%20R%20with%20SLURM%20job%20submission%20https://cbiagii.github.io/post/post_03/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -788,7 +927,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://cbiagii.github.io/project/cetf/&amp;title=CeTF" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://cbiagii.github.io/post/post_03/&amp;title=Integrating%20R%20with%20SLURM%20job%20submission" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -951,27 +1090,22 @@
 
   
   
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/post_02/">A fast and smart alternative for classifying cell types</a></li>
+      
+      <li><a href="/post/post_01/">Stop your analysis until you read this clustering secret</a></li>
+      
+    </ul>
+  </div>
+  
 
 
 
 
 
-    <div class="project-related-pages content-widget-hr">
-      
-      
-
-      
-      
-      
-
-      
-      
-      
-
-      
-      
-      
-    </div>
   </div>
 </article>
 
@@ -986,6 +1120,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
 
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
       
 
       
